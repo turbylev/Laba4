@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <cmath>
 #include <algorithm>
@@ -261,17 +261,17 @@ void invert(double** M, int n)
 				E2[row][col] = 0;
 		}
 	}
-	double** inv = clone(A0, n); //A_{0}
+	double** inv = clone(A0, n); 
 	double EPS = 0.001;   //погрешность
 	if (det(A, n) != 0) //если матрица не вырождена
 	{
-		while (fabs(det(matrix_multi(A, inv, n), n) - 1) >= EPS) //пока |det(A * A[k](^-1)) - 1| >= EPS
+		while (fabs(det(matrix_multi(A, inv, n), n) - 1) >= EPS) 
 		{
-			double** prev = clone(inv, n); //A[k-1]
-			inv = matrix_multi(A, prev, n);   //A.(A[k-1]^(-1))
-			scalar_multi(inv, n, -1);         //-A.(A[k-1]^(-1))
-			sum(inv, E2, n);                   //2E - A.(A[k-1]^(-1))
-			inv = matrix_multi(prev, inv, n); //(A[k-1]^(-1)).(2E - A.(A[k-1]^(-1)))
+			double** prev = clone(inv, n); 
+			inv = matrix_multi(A, prev, n);  
+			scalar_multi(inv, n, -1);        
+			sum(inv, E2, n);                  
+			inv = matrix_multi(prev, inv, n); 
 			clear(prev, n);
 		}
 
@@ -328,9 +328,9 @@ int main()
 
 
 
-	//SysEquCout(Coef, f, n);
+	
 	Gaus_Ans = GausMet(CoefG, fG, n);
-	/////////////////////////////ans1.dat///////////////////////////////////////////
+
 	ofstream gauss("ans1.dat");
 	for (int i = 0; i < n; i++)
 	{
@@ -339,7 +339,7 @@ int main()
 	gauss.close();
 
 	PVR_Ans = PVR(Coefpvr, fpvr, n);
-	/////////////////////////////ans2.dat///////////////////////////////////////////
+
 	ofstream pvr("ans2.dat");
 	for (int i = 0; i < n; i++)
 	{
